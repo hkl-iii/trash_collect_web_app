@@ -5,11 +5,25 @@ from django.db import models
 
 
 class Customer(models.Model):
+    class WeekDay(models.IntegerChoices):
+        MONDAY = 0
+        TUESDAY = 1
+        WEDNESDAY = 2
+        THURSDAY = 3
+        FRIDAY = 4
+        SATURDAY = 5
+        SUNDAY = 6
     name = models.CharField(max_length=50)
     user = models.ForeignKey('accounts.User', blank=True, null=True, on_delete=models.CASCADE)
+    suspended = models.BooleanField(default=False)
     pickup_date = models.CharField(max_length=50)
     start_date = models.DateField(null=True)
+    weekday = models.IntegerField(choices=WeekDay.choices)
     end_date = models.DateField(null=True)
     balance = models.IntegerField(default=0)
     zipcode = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
+
+
+
+
