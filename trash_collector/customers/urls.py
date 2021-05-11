@@ -7,5 +7,5 @@ from . import views
 app_name = "customers"
 urlpatterns = [
     path('', views.index, name="index"),
-    path('requestpickup/', views.pickup, name="requestpickup")
+    path('requestpickup/', views.pickup, name='requestpickup')
 ]
