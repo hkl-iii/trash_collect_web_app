@@ -6,6 +6,7 @@ from .models import Customer
 # Create your views here.
 
 # TODO: Create a function for each path created in customers/urls.py. Each will need a template as well.
+from .. import customers
 
 
 def index(request):
@@ -18,7 +19,7 @@ def index(request):
     return render(request, 'customers/index.html')
 
 
-def pickup(request):
+def pickup(request, user_id=None):
     user = request.user
     customer = customers.objects.get(pk=user_id)
     context = {
