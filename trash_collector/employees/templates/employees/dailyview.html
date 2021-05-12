@@ -16,6 +16,7 @@ Following are the customers you needs pickup service today!
 <tr>
     <td class="text-center">{{ customer.id }}</td>
     <td class="text-center">{{ customer.name }}</td>
+    <td><button type="submit" value={{customer.id}} onclick="location.href='/employees/dailyview/?id={{customer.id}}'" name='mybtn2'>Confirm</button></td>
 </tr>
 {% endfor %}
 </table>
