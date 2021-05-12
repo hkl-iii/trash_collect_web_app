@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Daily View {% endblock %}
+
+{% block header %} Daily View {% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+Hello Employee {{ user.username }}!<br>
+
+Following are the customers you needs pickup service today!
+<br>
+<table>
+{% for customer in customers %}
+<tr>
+    <td class="text-center">{{ customer.id }}</td>
+    <td class="text-center">{{ customer.name }}</td>
+</tr>
+{% endfor %}
+</table>
+{%endif%}
+{% endblock %}
