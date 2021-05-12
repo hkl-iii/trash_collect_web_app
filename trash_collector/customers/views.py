@@ -1,7 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-
 from .models import Customer
 
 
@@ -28,3 +27,15 @@ def pickup(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/requestpickup.html')
+
+
+def suspend(request):
+    user = request.user
+    if request.method == 'POST':
+        user.start_date = request.POST.get('start')
+        user.end_date = request.POST.get('end')
+        print(user.start_date)
+        print(user.end_date)
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        return render(request, 'customers/suspendpickup.html')
