@@ -60,3 +60,18 @@ def one_time_pickup(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/requestapickup.html')
+
+
+def create(request):
+    user = request.user
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        pickup_date = request.POST.get('pickup_date')
+        balance = request.POST.get('balance')
+        zipcode = request.POST.get('zipcode')
+        address = request.POST.get('address')
+        new_customer = Customer(name=name, pickup_date=pickup_date, balance=balance, zipcode=zipcode, address=address, user_id=user.id)
+        new_customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        return render(request, 'customers/registercustomer.html')

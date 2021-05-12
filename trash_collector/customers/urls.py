@@ -10,5 +10,6 @@ urlpatterns = [
     path('setpickup/', views.pickup, name='setpickup'),
     path('suspendpickup/', views.suspend, name="suspendpickup"),
     path('accountinfo/', views.detail, name='accountinfo'),
-    path('requestapickup/', views.one_time_pickup, name='requestapickup')
+    path('requestapickup/', views.one_time_pickup, name='requestapickup'),
+    path('registercustomer/', views.create, name='registercustomer')
 ]
