@@ -7,6 +7,8 @@ from . import views
 app_name = "customers"
 urlpatterns = [
     path('', views.index, name="index"),
-    path('requestpickup/', views.pickup, name='requestpickup'),
-    path('suspendpickup/', views.suspend, name="suspendpickup")
+    path('setpickup/', views.pickup, name='setpickup'),
+    path('suspendpickup/', views.suspend, name="suspendpickup"),
+    path('accountinfo/', views.detail, name='accountinfo'),
+    path('requestapickup/', views.one_time_pickup, name='requestapickup')
 ]

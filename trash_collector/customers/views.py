@@ -21,21 +21,42 @@ def index(request):
 
 def pickup(request):
     user = request.user
+    customer = Customer.objects.get(user=user.id)
     if request.method == 'POST':
-        user.pickup_date = request.POST.get('name')
-        print(user.pickup_date)
+        customer.pickup_date = request.POST.get('name')
+        customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
-        return render(request, 'customers/requestpickup.html')
+        return render(request, 'customers/setpickup.html')
 
 
 def suspend(request):
     user = request.user
+    customer = Customer.objects.get(user=user.id)
     if request.method == 'POST':
-        user.start_date = request.POST.get('start')
-        user.end_date = request.POST.get('end')
-        print(user.start_date)
-        print(user.end_date)
+        customer.start_date = request.POST.get('start')
+        customer.end_date = request.POST.get('end')
+        customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/suspendpickup.html')
+
+
+def detail(request):
+    user = request.user
+    customer = Customer.objects.get(user=user.id)
+    context = {
+        'customer': customer
+    }
+    return render(request, 'customers/accountinfo.html', context)
+
+
+def one_time_pickup(request):
+    user = request.user
+    customer = Customer.objects.get(user=user.id)
+    if request.method == 'POST':
+        customer.one_time_pickup = request.POST.get('pickup')
+        customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        return render(request, 'customers/requestapickup.html')

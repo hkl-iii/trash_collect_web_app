@@ -9,9 +9,41 @@
 {% if user.is_authenticated %}
   {% for group in user.groups.all%}
     {% if group.name == "Customers" %}
-    <p>Customer Navbar</p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'customers:index'%}">Trash Collector</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="{% url 'customers:index'%}">Home</a>
+        <a class="nav-link" href="{% url 'customers:setpickup'%}">Set pickup</a>
+        <a class="nav-link" href="{% url 'customers:requestapickup'%}">One time pickup</a>
+        <a class="nav-link" href="{% url 'customers:suspendpickup'%}">Suspend services</a>
+        <a class="nav-link" href="{% url 'customers:accountinfo'%}">Account info</a>
+      </div>
+    </div>
+  </div>
+</nav>
     {% elif group.name == "Employees" %}
-    <p>Employee Navbar</p>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'customers:index'%}">Trash Collector</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="{% url 'customers:index'%}">Home</a>
+        <a class="nav-link" href="{% url 'customers:setpickup'%}">Set pickup</a>
+        <a class="nav-link" href="{% url 'customers:requestapickup'%}">One time pickup</a>
+        <a class="nav-link" href="{% url 'customers:suspendpickup'%}">Suspend services</a>
+        <a class="nav-link" href="{% url 'customers:accountinfo'%}">Account info</a>
+      </div>
+    </div>
+  </div>
+</nav>
     {% endif %}
   {% endfor %}
   <p><a href="{% url 'logout' %}">Log Out</a></p>
