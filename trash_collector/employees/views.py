@@ -13,7 +13,7 @@ from datetime import datetime
 
 def index(request):
     # Get the Customer model from the other app, it can now be used to query the db
-    Customer = apps.get_model('customers.Customer')
+    customer = apps.get_model('customers.Customer')
     return render(request, 'employees/index.html')
 
 

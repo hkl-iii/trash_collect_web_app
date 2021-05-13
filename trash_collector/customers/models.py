@@ -24,4 +24,4 @@ class Customer(models.Model):
     address = models.CharField(max_length=50)
     one_time_pickup = models.DateField(null=True, blank=True)
     weekday = models.IntegerField(default=0, choices=WeekDay.choices)
-    pickup_date = models.DateField(null=True, blank=True)
+    pickup_date = models.CharField(max_length=50)

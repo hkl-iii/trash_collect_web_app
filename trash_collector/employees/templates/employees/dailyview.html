@@ -12,7 +12,7 @@ Hello Employee {{ user.username }}!<br>
 Following are the customers you needs pickup service today!
 <br>
 <table>
-{% for customer in customers %}
+{% for customer in all_customers %}
 <tr>
     <td class="text-center">{{ customer.id }}</td>
     <td class="text-center">{{ customer.name }}</td>
