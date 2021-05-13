@@ -66,7 +66,7 @@ def create(request):
     user = request.user
     if request.method == 'POST':
         name = request.POST.get('name')
-        pickup_date = request.POST.get('weekday')
+        pickup_date = request.POST.get('pickup_date')
         balance = request.POST.get('balance')
         zipcode = request.POST.get('zipcode')
         address = request.POST.get('address')
