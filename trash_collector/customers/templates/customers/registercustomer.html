@@ -12,7 +12,7 @@
   <form action="{% url 'customers:registercustomer'%}" method ="post">
       {% csrf_token %}
       Name:<input type="text" name ="name" id="name"><br>
-      Pick up day:<input type="text" name = "pickup_date" id="pickup_date"><br>
+      Pickup day:<input type="text" name = "pickup_date" id="pickup_date"><br>
       Balance:<input type="text" name = "balance" id="balance"><br>
       Zipcode:<input type="text" name = "zipcode" id="zipcode"><br>
       Address:<input type="text" name = "address" id="address"><br>
