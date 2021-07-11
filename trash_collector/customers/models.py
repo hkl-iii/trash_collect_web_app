@@ -25,3 +25,7 @@ class Customer(models.Model):
     one_time_pickup = models.DateField(null=True, blank=True)
     weekday = models.IntegerField(default=0, choices=WeekDay.choices)
     pickup_date = models.CharField(max_length=50)
+    is_suspended = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name

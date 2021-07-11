@@ -8,17 +8,78 @@
 {% if user.is_authenticated %}
 
 Hello Employee {{ user.username }}!<br>
+<div class="container">
+    <div class="row">
+        <h1 style="color:red">these are the customers you needs pickup service today!</h1>
+        <br>
 
-Following are the customers you needs pickup service today!
-<br>
-<table>
-{% for customer in all_customers %}
-<tr>
-    <td class="text-center">{{ customer.id }}</td>
-    <td class="text-center">{{ customer.name }}</td>
-    <td><button type="submit" value={{customer.id}} onclick="location.href='/employees/dailyview/?id={{customer.id}}'" name='mybtn2'>Confirm</button></td>
-</tr>
-{% endfor %}
-</table>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">customer id</th>
+                    <th scope="col">customer Name</th>
+                    <th scope="col">customer zipcode</th>
+                    <th scope="col">customer address</th>
+                    <th scope="col">Confirm pickup</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+
+                <tr>
+                    <th scope="row">{{ customer.id }}</th>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.zipcode }}</td>
+
+                    <td>{{ customer.address }}</td>
+                    <td><a type="submit" class="btn btn-primary" name='mybtn2'
+                            href="{% url 'employees:confirm_pickup' customer.id %}">Confirm
+                        </a></td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+
+        <h1 style="color:red">list of confirmed pickup</h1>
+
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">pickup id</th>
+                    <th scope="col">employee Name</th>
+                    <th scope="col">pickup_date</th>
+                    <th scope="col">is completed</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for pickup in confirmed_pickup_list %}
+
+                <tr>
+                    <th scope="row">{{ pickup.id }}</th>
+                    <td>{{ pickup.employee }}</td>
+                    <td>{{ pickup.pickup_date }}</td>
+
+                    <td>{{ pickup.is_completed }}</td>
+
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+
+
 {%endif%}
 {% endblock %}
